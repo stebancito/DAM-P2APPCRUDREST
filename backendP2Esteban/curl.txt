@@ -1,0 +1,8 @@
+## Probar conexión
+curl http://localhost:5000
+
+## Post de registro
+curl -X POST http://localhost:5000/register -H "Content-Type: application/json" -d '{"username":"juan","password":"1234"}'
+
+## Post de login
+curl -X POST http://localhost:5000/login -H "Content-Type: application/json" -d '{"username":"juan","password":"1234"}'
