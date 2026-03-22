@@ -12,5 +12,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/", authRoutes);
+app.use("/tasks", taskRoutes);
 
 export default app;
