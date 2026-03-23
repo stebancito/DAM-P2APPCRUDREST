@@ -13,7 +13,7 @@ export const register = async (req, res) => {
         });
 
     } catch (error) {
-
+        console.error("Error en registro de usuario:", error.message);
         if (error.message === "USER_EXISTS") {
             return res.status(400).json({ message: "El usuario ya existe" });
         }
@@ -37,6 +37,7 @@ export const login = async (req, res) => {
         });
 
     } catch (error) {
+        console.error("Error en inicio de sesión:", error.message);
 
         if (error.message === "USER_NOT_FOUND") {
             return res.status(404).json({ message: "Usuario no encontrado" });
