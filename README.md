@@ -49,31 +49,61 @@ La lógica del proyecto se divide en dos partes principales:
 
 ## Desarrollo
 
-A continuación se presentan las capturas de pantalla que evidencian el correcto funcionamiento de la aplicación, el consumo de la API REST y las validaciones del sistema.
+A continuación se presentan las capturas de pantalla que evidencian el flujo de la aplicación, el consumo de la API REST y las validaciones del sistema manejadas mediante notificaciones `Toast`.
 
-*(Nota: Las siguientes imágenes demuestran la interfaz responsiva y la conexión al servidor local).*
+### 1. Sistema de Autenticación y Manejo de Errores
 
-### 1. Sistema de Autenticación
-**Pantalla de Inicio de Sesión:**
-![Inicio de Sesión](ruta/a/tu/imagen_login.png)
-*Figura 1: Pantalla principal de login implementada con componentes de Material 3.*
+El flujo comienza en el punto de entrada de la aplicación, donde el usuario puede iniciar sesión o navegar a la vista de creación de cuenta.
 
-**Pantalla de Registro:**
-![Registro de Usuario](ruta/a/tu/imagen_registro.png)
-*Figura 2: Interfaz para crear un nuevo usuario. Las contraseñas se envían al backend y se guardan encriptadas.*
+**Pantalla de Inicio de Sesión y Registro:**
+<br>
+<img src="screenshots/inicio-sesion.png" width="300"> 
+<img src="screenshots/crear-cuenta.png" width="300">
+
+*Figura 1: Pantalla principal de Login (izquierda) y formulario de Registro (derecha), ambos implementados con diseño responsivo y componentes de Material Design 3.*
+
+**Validaciones en el Registro:**
+<br>
+<img src="screenshots/noti-registrobueno.png" width="300"> 
+<img src="screenshots/registro-malo.png" width="300">
+
+*Figura 2: Manejo de respuestas HTTP del registro. Si el servidor responde con un 201, se notifica el éxito (izquierda). Si devuelve un error 400 (ej. usuario ya existente), Retrofit atrapa la excepción y notifica al usuario sin crashear la app (derecha).*
+
+**Validaciones en el Login:**
+<br>
+<img src="screenshots/ingresar.png" width="300"> 
+<img src="screenshots/pass-incorrecta.png" width="300">
+
+*Figura 3: Proceso de login. El usuario ingresa sus datos (izquierda). Si los datos no coinciden, el backend rechaza la petición con un error 401 y la app muestra el mensaje correspondiente de "Contraseña incorrecta" (derecha).*
+
+---
 
 ### 2. Operaciones CRUD (Gestión de Tareas)
-**Leer (Read) - Lista de Tareas:**
-![Lista de Tareas](ruta/a/tu/imagen_lista_tareas.png)
-*Figura 3: Pantalla principal protegida por sesión. Muestra las tareas asociadas al usuario autenticado extraídas mediante petición GET.*
 
-**Crear y Actualizar (Create / Update):**
-![Diálogo Crear/Editar](ruta/a/tu/imagen_crear_editar.png)
-*Figura 4: Diálogo emergente para registrar (POST) o modificar (PUT) una tarea.*
+Una vez que el usuario se autentica con éxito, la aplicación almacena el Token JWT en memoria e ingresa a la vista principal de la gestión de datos.
+
+**Leer (Read) - Lista de Tareas:**
+<br>
+<img src="screenshots/task-list.png" width="300">
+*Figura 4: Ejecución exitosa de la petición GET. Muestra las tareas que le pertenecen únicamente al usuario autenticado. Se renderizan mediante una `LazyColumn` y componentes tipo `Card`.*
+
+**Crear (Create):**
+<br>
+<img src="screenshots/nueva-tarea.png" width="300">
+
+*Figura 5: Al pulsar el Floating Action Button (botón "+"), se despliega un `AlertDialog` para enviar una petición POST al servidor y crear un nuevo registro.*
+
+**Actualizar (Update):**
+<br>
+<img src="screenshots/task-edit.png" width="300">
+
+*Figura 6: Al seleccionar el icono de lápiz sobre una tarjeta existente, el mismo `AlertDialog` se recicla, precargando los datos actuales. Al guardar, se dispara una petición PUT con el ID de la tarea.*
 
 **Borrar (Delete):**
-![Borrar Tarea](ruta/a/tu/imagen_borrar.png)
-*Figura 5: Al presionar el icono de papelera, se ejecuta el método DELETE eliminando el registro de PostgreSQL y actualizando la vista.*
+<br>
+<img src="screenshots/task-delete.png" width="300">
+
+*Figura 7: Al presionar el icono de la papelera roja, el cliente envía la petición DELETE. Si la base de datos elimina el registro correctamente, se recibe un código 200 OK, se avisa mediante un Toast en la parte inferior y la lista se refresca automáticamente.*
 
 ---
 ### Comunicación Frontend - Backend (API REST)
