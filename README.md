@@ -1,13 +1,39 @@
-# Instituto Politécnico Nacional
-## Escuela Superior de Cómputo (ESCOM)
+<div align="center">
 
-**Unidad de Aprendizaje:** Desarrollo de aplicaciones móviles nativas
-**Práctica 2:** Aplicación móvil básica para operaciones CRUD con un servicio REST
+# INSTITUTO POLITÉCNICO NACIONAL
+## "Escuela Superior de Cómputo"
 
-* **Alumno:** Rios Gomez Juan Esteban
-* **Número de Boleta:** 2023630116
-* **Profesor:** Gabriel Hurtado Avilés
-* **Fecha de Entrega:** 27 de marzo de 2026
+<br>
+
+### DESARROLLO DE APLICACIONES 
+### MOVILES NATIVAS 
+<br>
+
+## PRÁCTICA 2: IAplicación móvil básica para operaciones CRUD con un servicio REST
+
+<br>
+<br>
+
+**ALUMNOS:**                   
+**RÍOS GÓMEZ JUAN ESTEBAN - 2023630116**   
+**ROJAS BARRÓN ISAAC - 2023630463**   
+
+<br>
+
+**PROFESOR:**
+**GABRIEL HURTADO AVILÉS**
+
+<br>
+
+**GRUPO:**
+**7CV4**
+
+<br>
+
+**FECHA DE ENTREGA:**
+**26 de marzo de 2026**
+
+</div>
 
 ---
 
